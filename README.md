@@ -1,1 +1,0 @@
-# proje-gorev-yonetimsistemi

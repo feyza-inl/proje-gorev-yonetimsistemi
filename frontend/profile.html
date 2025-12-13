@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil - PGYS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect x="6" y="6" width="20" height="20" rx="4" stroke="currentColor" stroke-width="2"/>
+                        <path d="M12 16L15 19L20 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <span class="logo-text">PGYS</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Ana Sayfa</a></li>
+                <li><a href="index.html#projeler" class="nav-link">Projeler</a></li>
+                <li><a href="index.html#gorevler" class="nav-link">Görevler</a></li>
+                <li><a href="index.html#ekip" class="nav-link">Ekip</a></li>
+                <li><a href="profile.html" class="nav-link active">Profil</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-profile" id="userProfile">
+                    <div class="user-avatar" id="userAvatar">?</div>
+                    <span class="user-name" id="userName">Giriş Yapın</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-container">
+                <!-- Sidebar -->
+                <div class="profile-sidebar">
+                    <div class="profile-card">
+                        <div class="profile-avatar-large" id="profileAvatarLarge">?</div>
+                        <h2 class="profile-name" id="profileName">-</h2>
+                        <p class="profile-email" id="profileEmail">-</p>
+                        <div class="profile-stats">
+                            <div class="stat-box">
+                                <div class="stat-value" id="statProjeler">0</div>
+                                <div class="stat-label">Proje</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value" id="statGorevler">0</div>
+                                <div class="stat-label">Görev</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-menu">
+                        <button class="menu-item active" onclick="showTab('bilgiler')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Bilgilerim
+                        </button>
+                        <button class="menu-item" onclick="showTab('sifre')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" stroke-width="2"/>
+                                <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Şifre Değiştir
+                        </button>
+                        <button class="menu-item" onclick="showTab('gorevlerim')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                <path d="M21 12V19C21 20.1046 20.1046 21 19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Görevlerim
+                        </button>
+                        <button class="menu-item" onclick="showTab('projelerim')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2"/>
+                                <path d="M9 3V21M15 3V21M3 9H21M3 15H21" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            Projelerim
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="profile-content">
+                    <!-- Bilgilerim Tab -->
+                    <div id="tab-bilgiler" class="tab-content active">
+                        <div class="content-header">
+                            <h3>Profil Bilgilerim</h3>
+                            <p>Hesap bilgilerinizi buradan güncelleyebilirsiniz</p>
+                        </div>
+                        <form id="profileForm" onsubmit="handleProfileUpdate(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Ad *</label>
+                                    <input type="text" id="profileAd" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Soyad *</label>
+                                    <input type="text" id="profileSoyad" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>E-posta *</label>
+                                <input type="email" id="profileEposta" required>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                Değişiklikleri Kaydet
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Şifre Değiştir Tab -->
+                    <div id="tab-sifre" class="tab-content">
+                        <div class="content-header">
+                            <h3>Şifre Değiştir</h3>
+                            <p>Güvenliğiniz için güçlü bir şifre kullanın</p>
+                        </div>
+                        <form id="passwordForm" onsubmit="handlePasswordChange(event)">
+                            <div class="form-group">
+                                <label>Mevcut Şifre *</label>
+                                <input type="password" id="oldPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Yeni Şifre *</label>
+                                <input type="password" id="newPassword" required minlength="6">
+                                <small style="color: var(--text-muted); display: block; margin-top: 0.25rem;">
+                                    En az 6 karakter
+                                </small>
+                            </div>
+                            <div class="form-group">
+                                <label>Yeni Şifre Tekrar *</label>
+                                <input type="password" id="confirmPassword" required minlength="6">
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                Şifreyi Güncelle
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Görevlerim Tab -->
+                    <div id="tab-gorevlerim" class="tab-content">
+                        <div class="content-header">
+                            <h3>Görevlerim</h3>
+                            <p>Size atanmış görevleri görüntüleyin</p>
+                        </div>
+                        <div id="myTasksList" class="tasks-list">
+                            <div class="loading">Görevler yükleniyor...</div>
+                        </div>
+                    </div>
+
+                    <!-- Projelerim Tab -->
+                    <div id="tab-projelerim" class="tab-content">
+                        <div class="content-header">
+                            <h3>Projelerim</h3>
+                            <p>Dahil olduğunuz projeleri görüntüleyin</p>
+                        </div>
+                        <div id="myProjectsList" class="projects-list">
+                            <div class="loading">Projeler yükleniyor...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <rect x="6" y="6" width="20" height="20" rx="4" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 16L15 19L20 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="logo-text">PGYS</span>
+                    </div>
+                    <p class="footer-description">
+                        Proje Görev Yönetim Sistemi<br>
+                        Veritabanı Projesi
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PGYS. Tüm hakları saklıdır.</p>
+                <p>Veritabanı Projesi - KONYA TEKNİK ÜNİVERSİTESİ</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="profile.js"></script>
+</body>
+</html>
