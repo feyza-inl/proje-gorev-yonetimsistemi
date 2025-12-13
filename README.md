@@ -1,4 +1,4 @@
-# 🚀 PGYS - Proje Görev Yönetim Sistemi
+# PGYS - Proje Görev Yönetim Sistemi
 
 Bu proje, **Veritabanı Yönetim Sistemleri** dersi kapsamında geliştirilmiş; projelerin, görevlerin ve ekiplerin tek bir platform üzerinden yönetilmesini sağlayan web tabanlı bir uygulamadır.
 
